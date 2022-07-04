@@ -1,0 +1,11 @@
+server:
+  port: 9091
+spring:
+  datasource:
+    url: jdbc:mariadb://localhost:3310/s2_db
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: root
+    password: root
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
