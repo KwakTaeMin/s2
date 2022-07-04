@@ -11,16 +11,16 @@ import java.io.Reader;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ChatCsvs {
+public class ChatCsvList {
 
-    private List<ChatCsv> chatCsvs;
+    private List<ChatCsv> chatCsvList;
 
-    public ChatCsvs(MultipartFile file) {
+    public ChatCsvList(MultipartFile file) {
         this.importChatCsvs(file);
     }
 
     public List<Chat> getChats() {
-        return chatCsvs.stream()
+        return chatCsvList.stream()
                 .map(ChatCsv::toChat)
                 .collect(Collectors.toList());
     }
@@ -31,7 +31,7 @@ public class ChatCsvs {
                     .withType(ChatCsv.class)
                     .withIgnoreLeadingWhiteSpace(true)
                     .build();
-            this.chatCsvs = csvToBean.parse();
+            this.chatCsvList = csvToBean.parse();
 
         } catch (Exception exception) {
             throw new ChatCsvImportException();
