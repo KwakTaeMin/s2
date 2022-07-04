@@ -17,7 +17,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.OAS_30)
                 .useDefaultResponseMessages(false)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.tm.s2.chatContent.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.tm.s2.chat.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(apiInfo());
@@ -25,8 +25,8 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Swagger Test")
-                .description("SwaggerConfig")
+                .title("S2 Swagger")
+                .description("S2 API Swagger Test")
                 .version("3.0")
                 .build();
     }

@@ -35,3 +35,18 @@ out/
 
 ### VS Code ###
 .vscode/
+/docker/maria-db/db/data/*
+/docker/maria-db/db/data/mysql/
+/docker/maria-db/db/data/performance_schema/
+/docker/maria-db/db/data/s2_db/
+/docker/maria-db/db/data/sys/
+/docker/maria-db/db/data/aria_log.00000001
+/docker/maria-db/db/data/aria_log_control
+/docker/maria-db/db/data/ddl_recovery.log
+/docker/maria-db/db/data/ddl_recovery-backup.log
+/docker/maria-db/db/data/ib_buffer_pool
+/docker/maria-db/db/data/ib_logfile0
+/docker/maria-db/db/data/ibdata1
+/docker/maria-db/db/data/ibtmp1
+/docker/maria-db/db/data/multi-master.info
+/docker/maria-db/db/data/mysql_upgrade_info
