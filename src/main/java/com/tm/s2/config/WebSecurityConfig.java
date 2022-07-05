@@ -27,17 +27,13 @@ public class WebSecurityConfig {
 	// https://velog.io/@code12/Spring-Security-Spring-Boot%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-Database-Authentication
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/login").permitAll()
-			.antMatchers("/chat/**").hasAuthority("Admin")
-			.anyRequest().authenticated()
-			.and().formLogin()
-			//.loginPage("/login")
-			//.usernameParameter("username")
-			.permitAll()
-			.and()
-			.rememberMe().key("1234")
-			.and()
-			.logout().permitAll();
+		http
+				.authorizeRequests()
+				.antMatchers("/login").permitAll()
+				.antMatchers("/chat/**").hasAuthority("ADMIN")
+				.anyRequest().authenticated()
+				.and().formLogin().permitAll()
+				.and().logout().permitAll();
 
 		http.headers().frameOptions().sameOrigin();
 		return http.build();
