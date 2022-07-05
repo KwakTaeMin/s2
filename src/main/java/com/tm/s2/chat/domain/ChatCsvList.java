@@ -18,7 +18,7 @@ public class ChatCsvList {
     private List<ChatCsv> chatCsvList;
 
     public ChatCsvList(MultipartFile file) {
-        this.importChatCsvs(file);
+        this.importChatCsvList(file);
     }
 
     public List<Chat> getChats() {
@@ -27,7 +27,7 @@ public class ChatCsvList {
                 .collect(Collectors.toList());
     }
 
-    private void importChatCsvs(MultipartFile file) {
+    private void importChatCsvList(MultipartFile file) {
         try (Reader reader = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
             CsvToBean<ChatCsv> csvToBean = new CsvToBeanBuilder(reader)
                     .withType(ChatCsv.class)
