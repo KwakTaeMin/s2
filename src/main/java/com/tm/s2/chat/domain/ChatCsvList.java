@@ -13,6 +13,8 @@ import java.util.stream.Collectors;
 
 public class ChatCsvList {
 
+    private final String EXCEPTION_MESSAGE = "Chat CSV 파일 Import 시 실패하였습니다.";
+
     private List<ChatCsv> chatCsvList;
 
     public ChatCsvList(MultipartFile file) {
@@ -34,7 +36,7 @@ public class ChatCsvList {
             this.chatCsvList = csvToBean.parse();
 
         } catch (Exception exception) {
-            throw new ChatCsvImportException();
+            throw new ChatCsvImportException(EXCEPTION_MESSAGE);
         }
 
     }
