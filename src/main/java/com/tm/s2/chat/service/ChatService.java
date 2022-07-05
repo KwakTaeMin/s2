@@ -1,13 +1,15 @@
 package com.tm.s2.chat.service;
 
-import com.tm.s2.chat.domain.Chat;
-import com.tm.s2.chat.domain.ChatCsvs;
-import com.tm.s2.chat.repository.ChatRepository;
-import lombok.AllArgsConstructor;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.List;
+import com.tm.s2.chat.domain.Chat;
+import com.tm.s2.chat.domain.ChatCsvList;
+import com.tm.s2.chat.repository.ChatRepository;
+
+import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
@@ -20,7 +22,7 @@ public class ChatService {
     }
 
     public void importCsvChat(MultipartFile file) {
-        ChatCsvs chatCsvs = new ChatCsvs(file);
-        chatRepository.saveAll(chatCsvs.getChats());
+        ChatCsvList chatCsvList = new ChatCsvList(file);
+        chatRepository.saveAll(chatCsvList.getChats());
     }
 }
