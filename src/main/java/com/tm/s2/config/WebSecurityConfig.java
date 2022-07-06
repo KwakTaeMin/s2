@@ -38,7 +38,7 @@ public class WebSecurityConfig {
 			.logout().permitAll();
 
 		http.headers().frameOptions().sameOrigin();
-		return http.build();
+		return http.build(); //
 	}
 
 	@Bean
