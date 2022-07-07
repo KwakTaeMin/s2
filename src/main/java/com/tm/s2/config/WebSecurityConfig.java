@@ -9,9 +9,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-
+/*
 @Configuration
-@EnableWebSecurity
+/@EnableWebSecurity
+
 public class WebSecurityConfig {
 
 	@Bean
@@ -44,3 +45,5 @@ public class WebSecurityConfig {
 		return (web) -> web.ignoring().antMatchers("/images/**", "/js/**", "/webjars/**");
 	}
 }
+
+ */
