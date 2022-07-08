@@ -18,7 +18,9 @@ public class ChatService {
     private final ChatRepository chatRepository;
 
     public List<Chat> getChats() {
+        // todo : to change functions findAll(Sort sort)
         return chatRepository.findAll();
+
     }
 
     public void importCsvChat(MultipartFile file) {

@@ -5,4 +5,4 @@ CREATE TABLE `chat` (
         `message_date` varchar(200) NOT NULL DEFAULT '1' COMMENT '메시지 발송 날짜',
         PRIMARY KEY (`id`),
         UNIQUE KEY `uk_chat` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='메시지 내용';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='메시지 내용';
