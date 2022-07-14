@@ -1,6 +1,7 @@
 package com.tm.s2.chat.controller;
 
 import com.tm.s2.chat.domain.Chat;
+import com.tm.s2.chat.domain.FavoriteWord;
 import com.tm.s2.chat.service.ChatService;
 
 import io.swagger.models.auth.In;
@@ -28,7 +29,7 @@ public class ChatController {
     }
 
     @GetMapping("/favorite")
-    public HashMap<String, Integer> getFavorite(){
+    public List<FavoriteWord> getFavorite(){
         return chatService.favoriteWords();
     }
 

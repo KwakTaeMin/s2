@@ -1,7 +1,9 @@
 package com.tm.s2.chat.service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -13,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.tm.s2.chat.domain.Chat;
 import com.tm.s2.chat.domain.ChatCsvList;
+import com.tm.s2.chat.domain.FavoriteWord;
 import com.tm.s2.chat.repository.ChatRepository;
 
 import lombok.AllArgsConstructor;
@@ -34,7 +37,7 @@ public class ChatService {
 		chatRepository.saveAll(chatCsvList.getChats());
 	}
 
-	public HashMap<String, Integer> favoriteWords() {
+	public List<FavoriteWord> favoriteWords() {
 		List<String> messages = chatRepository.findAll().stream()
 			.map(Chat::getMessage)
 			.collect(Collectors.toList());
@@ -45,11 +48,11 @@ public class ChatService {
 			.collect(Collectors.toList());
 
 		Set<String> wordsSet = new HashSet<>(words); //distinct
-		HashMap<String, Integer> favoriteWords = new HashMap<>();
+		List<FavoriteWord> favoriteWords = new ArrayList<>();
 
 		wordsSet.stream()
-			.forEach(word -> favoriteWords.put(word, Collections.frequency(words, word)));
+			.forEach(word -> favoriteWords.add(new FavoriteWord(word, Collections.frequency(words, word))));
 
-		return favoriteWords;
+		return favoriteWords.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
 	}
 }
