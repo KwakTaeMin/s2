@@ -1,12 +1,11 @@
 package com.tm.s2.chat.domain;
 
-import java.util.Date;
-
-import javax.persistence.*;
-
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -24,9 +23,9 @@ public class Chat {
     private String message;
 
     @Column(nullable = false)
-    private Date messageDate;
+    private LocalDateTime messageDate;
 
-    public Chat(String userName, String message, Date messageDate) {
+    public Chat(String userName, String message, LocalDateTime messageDate) {
         this.userName = userName;
         this.message = message;
         this.messageDate = messageDate;

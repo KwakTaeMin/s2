@@ -12,8 +12,7 @@ public class FavoriteWord implements Comparable<FavoriteWord>{
 
 	@Override
 	public int compareTo(FavoriteWord favoriteWord) {
-
-		if(this.count > favoriteWord.count)
+		if(Integer.compare(this.count, favoriteWord.count) == 1)
 			return 1;
 		else if(this.count == favoriteWord.count)
 			return 0;

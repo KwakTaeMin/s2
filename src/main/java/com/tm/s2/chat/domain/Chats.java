@@ -1,5 +1,6 @@
 package com.tm.s2.chat.domain;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Chats {
@@ -10,4 +11,7 @@ public class Chats {
 		this.chats = chats;
 	}
 
+	public List<Chat> getChats() {
+		return Collections.unmodifiableList(this.chats);
+	}
 }

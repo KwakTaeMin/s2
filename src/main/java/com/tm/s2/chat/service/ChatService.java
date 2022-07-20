@@ -1,24 +1,13 @@
 package com.tm.s2.chat.service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-
+import com.tm.s2.chat.domain.*;
+import com.tm.s2.chat.repository.ChatRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.tm.s2.chat.domain.Chat;
-import com.tm.s2.chat.domain.ChatCsvList;
-import com.tm.s2.chat.domain.FavoriteWord;
-import com.tm.s2.chat.repository.ChatRepository;
-
-import lombok.AllArgsConstructor;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -27,14 +16,13 @@ public class ChatService {
 	private final ChatRepository chatRepository;
 
 	public List<Chat> getChats() {
-		// todo : to change functions findAll(Sort sort)
 		return chatRepository.findAll();
-
 	}
 
 	public void importCsvChat(MultipartFile file) {
 		ChatCsvList chatCsvList = new ChatCsvList(file);
-		chatRepository.saveAll(chatCsvList.getChats());
+		Chats chats = chatCsvList.getChats();
+		chatRepository.saveAll(chats.getChats());
 	}
 
 	public List<FavoriteWord> favoriteWords() {
@@ -42,17 +30,7 @@ public class ChatService {
 			.map(Chat::getMessage)
 			.collect(Collectors.toList());
 
-		List<String> words = messages.stream()
-			.map((message) -> message.split(" "))
-			.flatMap(Arrays::stream)
-			.collect(Collectors.toList());
-
-		Set<String> wordsSet = new HashSet<>(words); //distinct
-		List<FavoriteWord> favoriteWords = new ArrayList<>();
-
-		wordsSet.stream()
-			.forEach(word -> favoriteWords.add(new FavoriteWord(word, Collections.frequency(words, word))));
-
-		return favoriteWords.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
+		FavoriteWords favoriteWords = new FavoriteWords(messages);
+		return favoriteWords.getFavoriteWords();
 	}
 }

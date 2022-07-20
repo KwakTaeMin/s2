@@ -21,25 +21,21 @@ public class ChatCsvList {
         this.importChatCsvList(file);
     }
 
-    public List<Chat> getChats() {
-        return chatCsvList.stream()
+    public Chats getChats() {
+        return new Chats(chatCsvList.stream()
                 .map(ChatCsv::toChat)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()));
     }
 
     private void importChatCsvList(MultipartFile file) {
         try (Reader reader = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
-            CsvToBean<ChatCsv> csvToBean = new CsvToBeanBuilder(reader)
+            this.chatCsvList = new CsvToBeanBuilder(reader)
                     .withType(ChatCsv.class)
                     .withIgnoreLeadingWhiteSpace(true)
-                    .build();
-            this.chatCsvList = csvToBean.parse();
+                    .build().parse();
 
         } catch (Exception exception) {
             throw new ChatCsvImportException(EXCEPTION_MESSAGE);
         }
-
     }
-
-
 }
