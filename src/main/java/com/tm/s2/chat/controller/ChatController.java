@@ -49,7 +49,6 @@ public class ChatController {
         return ResponseEntity.ok(chatService.getMessageCountByUserName(userName));
     }
 
-
     @GetMapping("/message/count/group/date")
     public ResponseEntity<List<MessageCount>> getMessageCountGroupDate() {
         return ResponseEntity.ok(chatService.getMessageCountGroupByMessageDate());
