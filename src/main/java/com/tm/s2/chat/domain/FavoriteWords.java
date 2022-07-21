@@ -30,7 +30,7 @@ public class FavoriteWords {
                 .collect(Collectors.toList());
     }
 
-    private List<FavoriteWord>  countWords(List<String> words) {
+    private List<FavoriteWord> countWords(List<String> words) {
         List<FavoriteWord> favoriteWords = new ArrayList<>();
         Set<String> wordsSet = new HashSet<>(words); //distinct
         wordsSet.forEach(word -> favoriteWords.add(new FavoriteWord(word, Collections.frequency(words, word))));
