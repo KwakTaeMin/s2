@@ -30,7 +30,7 @@ public class ChatController {
     }
 
     @GetMapping("/word/favorite/{userName}")
-    public ResponseEntity<List<FavoriteWord>> getFfavoriteByUserName(@PathVariable String userName) {
+    public ResponseEntity<List<FavoriteWord>> getFavoriteByUserName(@PathVariable String userName) {
         return ResponseEntity.ok(chatService.favoriteWordsByUserName(userName));
     }
 
@@ -55,7 +55,7 @@ public class ChatController {
     }
 
     @GetMapping("/message/count/group/user-date")
-    public ResponseEntity<List<UserMessageCount>> getMessageCounGroupUserNameAndDate() {
+    public ResponseEntity<List<UserMessageCount>> getMessageCountGroupUserNameAndDate() {
         return ResponseEntity.ok(chatService.getMessageCountGroupByUserNameAndMessageDate());
     }
 

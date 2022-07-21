@@ -74,7 +74,4 @@ public class ChatService {
 		return chatRepository.findByUserName(userName).size();
 	}
 
-	public List<UserMessageCount> getUserMessageCountByDate() {
-		return chatCustomRepository.findUserMessageCountGroupByUserAndMessageDate();
-	}
 }
