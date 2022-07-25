@@ -1,15 +1,15 @@
 package com.tm.s2.chat.domain;
 
 import lombok.Getter;
-
-import java.time.LocalDate;
+import lombok.NoArgsConstructor;
 
 @Getter
+@NoArgsConstructor
 public class UserMessageCount extends MessageCount {
-    private String username;
+    private String userName;
 
-    public UserMessageCount(LocalDate messageDate, long count, String username) {
+    public UserMessageCount(String messageDate, long count, String userName) {
         super(messageDate, count);
-        this.username = username;
+        this.userName = userName;
     }
 }

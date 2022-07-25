@@ -1,17 +1,17 @@
 package com.tm.s2.chat.domain;
 
 import lombok.Getter;
-
-import java.time.LocalDate;
+import lombok.NoArgsConstructor;
 
 
 @Getter
+@NoArgsConstructor
 public class MessageCount {
 
-    private LocalDate messageDate;
+    private String messageDate;
     private long count;
 
-    public MessageCount(LocalDate messageDate, long count) {
+    public MessageCount(String messageDate, long count) {
         this.messageDate = messageDate;
         this.count = count;
     }

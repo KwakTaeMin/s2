@@ -5,6 +5,7 @@ import com.tm.s2.chat.domain.UserMessageCount;
 
 import java.util.List;
 
+
 public interface ChatCustomRepository {
 
     List<MessageCount> findMessageCountGroupByMessageDate();
